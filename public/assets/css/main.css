@@ -1,0 +1,13 @@
+.text{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40%;
+    /* justify-content: center; */
+}
+
+.page{
+    display: flex;
+    background-color: bisque;
+    justify-content: space-around;
+    margin-top: 40%;
+}

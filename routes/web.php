@@ -1,12 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
-Route::get("/", [CategoryController::class,"index"]);
-Route::get("/create", [CategoryController::class,"create"]);
-Route::get("/show", [CategoryController::class,"show"]);
-Route::post("/store", [CategoryController::class,"store"]);
-Route::get('/register', [AuthController::class,'register']);
+Route::resource("category",CategoryController::class);
+
+Route::get('/register', [AuthController::class,'index']);
+Route::post('/register', [AuthController::class,'register']);
+
+Route::get('/login', [AuthController::class,'register_view']);
 Route::post('/login', [AuthController::class,'login']);
+
+Route::resource("product",ProductController::class);
+
+Route::get("/", [AuthController::class,"welcome"]);

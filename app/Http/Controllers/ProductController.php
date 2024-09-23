@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::paginate(10);
-        return view('category.index', [
+        $categories = Product::paginate(10);
+        return view('product.index', [
             'categories' => $categories
         ]);
     }
@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        return view('product.create');
     }
 
     /**
@@ -37,35 +37,35 @@ class CategoryController extends Controller
             'status' => 'nullable',
         ]);
 
-        Category::create([
+        Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => $request->status == true ? 1:0,
         ]);
 
-        return redirect('/category')->with('status','Category Created Successfully');
+        return redirect('/product')->with('status','Product Created Successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Product $product)
     {
-        return view('category.show', compact('category'));
+        return view('product.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Product $product)
     {
-        return view('category.edit', compact('category'));
+        return view('product.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Product $product)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -73,21 +73,21 @@ class CategoryController extends Controller
             'status' => 'nullable',
         ]);
 
-        $category->update([
+        $product->update([
             'name' => $request->name,
             'description' => $request->description,
             'status' => $request->status == true ? 1:0,
         ]);
 
-        return redirect('/category')->with('status','Category Updated Successfully');
+        return redirect('/product')->with('status','Product Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Product $product)
     {
-        $category->delete();
-        return redirect('/category')->with('status','Category Deleted Successfully');
+        $product->delete();
+        return redirect('/product')->with('status','Product Deleted Successfully');
     }
 }

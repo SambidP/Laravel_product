@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-',  app()->getLocale()) }}">
 <head>
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -8,6 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Laravel 11 CRUD  Application</title>
+    
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,7 +20,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 </head>
-<body>
+<body class="page">
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light p-4">
+    <a class="navbar-brand" href="/">
+        <img src="/assets/img/laravel_icon_1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Product App
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" ">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+            <a class="nav-link" href="/product/create" " >Create Product</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/category/create" ">Create Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product" ">Product Listing</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/category" ">Category Listing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </nav>
+</section>
 
     <div class="container">
         @yield('content')
@@ -27,3 +58,6 @@
 
 </body>
 </html>
+
+
+        

@@ -12,9 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $categories = Product::paginate(10);
+        $products = Product::paginate(10);
         return view('product.index', [
-            'categories' => $categories
+            'products' => $products
         ]);
     }
 
@@ -34,16 +34,16 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'status' => 'nullable',
+            'category' => 'required|string|max:255',
         ]);
 
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
-            'status' => $request->status == true ? 1:0,
+            'category' => $request->category ,
         ]);
 
-        return redirect('/product')->with('status','Product Created Successfully');
+        return redirect('/product')->with('id','Product Created Successfully');
     }
 
     /**
@@ -70,16 +70,16 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'status' => 'nullable',
+            'category' => 'required|string|max:255',
         ]);
 
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
-            'status' => $request->status == true ? 1:0,
+            'category' => $request->category,
         ]);
 
-        return redirect('/product')->with('status','Product Updated Successfully');
+        return redirect('/product')->with('id','Product Updated Successfully');
     }
 
     /**
@@ -88,6 +88,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect('/product')->with('status','Product Deleted Successfully');
+        return redirect('/product')->with('id','Product Deleted Successfully');
     }
 }

@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('auth.layout')
 
 @section('content')
 <div class="container mt-5">
@@ -27,9 +27,15 @@
                       <div class="mb-3">
                           <label>Password</label>
                           <br/>
-                          <input type="text" name="password" /> 
+                          <input type="password" name="password" /> 
                           {{-- @error('status') <span class="text-danger">{{ $message }}</span> @enderror --}}
                       </div>
+                      <div class="mb-3">
+                        <label>Confirm Password</label>
+                        <br/>
+                        <input type="password" name="password_confirmation" /> 
+                        {{-- @error('status') <span class="text-danger">{{ $message }}</span> @enderror --}}
+                    </div>
                       <div class="mb-3">
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </div>

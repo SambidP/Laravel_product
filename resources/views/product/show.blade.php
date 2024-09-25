@@ -25,10 +25,10 @@
                             </p>
                         </div>
                         <div class="mb-3">
-                            <label>Status</label>
+                            <label>category</label>
                             <br/>
                             <p>
-                                {{ $product->status == 1 ? 'checked':'' }}
+                                {{ $product->category }}
                             </p>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('auth.layout')
 
 @section('content')
 <div class="container mt-5">

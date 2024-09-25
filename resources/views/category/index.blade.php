@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Categories List
-                            <a href="{{ url('product/create') }}" class="btn btn-primary float-end">Add Product</a>
+                            <a href="{{ url('category/create') }}" class="btn btn-primary float-end">Add Category</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -30,17 +30,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $product)
+                                @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->description }}</td>
-                                    <td>{{ $product->status == 1 ? 'Visible':'Hidden' }}</td>
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->description }}</td>
+                                    <td>{{ $category->status == 1 ? 'Visible':'Hidden' }}</td>
                                     <td>
-                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-success">Edit</a>
-                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-info">Show</a>
+                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ route('category.show', $category->id) }}" class="btn btn-info">Show</a>
 
-                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>

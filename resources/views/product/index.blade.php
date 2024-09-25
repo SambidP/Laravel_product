@@ -30,7 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $product)
+                                @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
@@ -51,7 +51,7 @@
                             </tbody>
                         </table>
 
-                        {{ $categories->links() }}
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

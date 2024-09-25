@@ -1,17 +1,17 @@
 @extends('category.layout')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-      <div class="col-md-12">
-          <div class="card">
+      <div class="col d-flex justify-content-center">
+          <div class="card text-black bg-info mb-3" style="width: 22rem;">
               <div class="card-header">
-                  <h4>Register an Account
+                  <h4>Register new account
                       <a href="{{ url('/') }}" class="btn btn-danger float-end">Back</a>
                   </h4>
               </div>
               <div class="card-body">
-                  <form action="/login" method="POST">
+                  <form action="/register" method="POST">
                       @csrf
 
                       <div class="mb-3">

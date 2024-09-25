@@ -26,9 +26,9 @@
                                 {{-- @error('description') <span class="text-danger">{{ $message }}</span> @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label>Status</label>
+                                <label>Category</label>
                                 <br/>
-                                <input type="checkbox" name="status" checked style="width:15px;height:15px;" /> Checked=visible, unchecked=hidden
+                                <input type="text" name="category" class="form-control"/>
                                 {{-- @error('status') <span class="text-danger">{{ $message }}</span> @enderror --}}
                             </div>
                             <div class="mb-3">

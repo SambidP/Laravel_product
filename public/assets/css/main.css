@@ -1,13 +1,27 @@
-.text{
-    display: flex;
-    justify-content: space-around;
-    padding-top: 40%;
-    /* justify-content: center; */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
 }
 
-.page{
-    display: flex;
-    background-color: bisque;
-    justify-content: space-around;
-    margin-top: 40%;
+.navbar{
+    background: whitesmoke;
+    padding: 1rem 8rem;
 }
+
+.navbar .navbar-brand{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+
+
+
+/* .page{
+    background-color: aqua;
+}
+
+.card-body{
+    background-color: azure;
+} */

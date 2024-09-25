@@ -7,12 +7,12 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Create Product
-                            <a href="{{ url('product') }}" class="btn btn-danger float-end">Back</a>
+                        <h4>Create Category
+                            <a href="{{ url('category') }}" class="btn btn-danger float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('product.store') }}" method="POST">
+                        <form action="{{ route('category.store') }}" method="POST">
                             @csrf
 
                             <div class="mb-3">

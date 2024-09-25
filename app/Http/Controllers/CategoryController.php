@@ -34,16 +34,16 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'status' => 'nullable',
+            'products' => 'required|string|max:255',
         ]);
 
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
-            'status' => $request->status == true ? 1:0,
+            'products' => $request->products ,
         ]);
 
-        return redirect('/category')->with('status','Category Created Successfully');
+        return redirect('/category')->with('name','Category Created Successfully');
     }
 
     /**
@@ -70,16 +70,16 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'status' => 'nullable',
+            'products' => 'required|string|max:255',
         ]);
 
         $category->update([
             'name' => $request->name,
             'description' => $request->description,
-            'status' => $request->status == true ? 1:0,
+            'products' => $request->products,
         ]);
 
-        return redirect('/category')->with('status','Category Updated Successfully');
+        return redirect('/category');
     }
 
     /**
@@ -88,6 +88,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('/category')->with('status','Category Deleted Successfully');
+        return redirect('/category');
     }
 }

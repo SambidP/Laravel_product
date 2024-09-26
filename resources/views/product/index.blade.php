@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-md-12">
 
-                @session('status')
+                @session('category')
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {{ session('category') }}
                 </div>
                 @endsession
 
@@ -25,7 +25,7 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Status</th>
+                                    <th>Category</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,7 +35,7 @@
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->description }}</td>
-                                    <td>{{ $product->status == 1 ? 'Visible':'Hidden' }}</td>
+                                    <td>{{ $product->category }}</td>
                                     <td>
                                         <a href="{{ route('product.edit', $product->id) }}" class="btn btn-success">Edit</a>
                                         <a href="{{ route('product.show', $product->id) }}" class="btn btn-info">Show</a>

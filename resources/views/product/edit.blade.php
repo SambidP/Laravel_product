@@ -27,10 +27,10 @@
                                 @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
-                                <label>Status</label>
+                                <label>Category</label>
                                 <br/>
-                                <input type="checkbox" name="status" {{ $product->status == 1 ? 'checked':'' }} style="width:30px;height:30px;" /> Checked=visible, unchecked=hidden
-                                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                                <input type="text" name="category" class="form-control" value="{{ $product->category }} " />
+                                @error('category') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary">Update</button>

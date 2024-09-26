@@ -27,31 +27,15 @@
         <img src="/assets/img/laravel_icon_1.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Product App
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" ">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto ">
-        <li class="nav-item">
-            <a class="nav-link" href="/product/create" " >Create Product</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/category/create" ">Create Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/product" ">Product Listing</a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="/category" ">Category Listing</a>
-          </li> 
+      <ul class="navbar-nav ms-auto">
+        <li>
           <form action="/logout" method="post">
             @csrf
-            <button type="submit" class="btn btn-info">
+            <button type="submit" class="btn btn-info margin-left ">
               Logout
             </button>
-          </form>       
-      </ul>
-    </div>
+          </form>
+        </li>
   </nav>
 </section>
 

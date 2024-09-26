@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-md-12">
 
-                @session('status')
+                {{-- @session('status')
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
-                @endsession
+                @endsession --}}
 
                 <div class="card">
                     <div class="card-header">
@@ -25,7 +25,7 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Status</th>
+                                    <th>Products</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,7 +35,7 @@
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td>{{ $category->status == 1 ? 'Visible':'Hidden' }}</td>
+                                    <td>{{ $category->products }}</td>
                                     <td>
                                         <a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
                                         <a href="{{ route('category.show', $category->id) }}" class="btn btn-info">Show</a>

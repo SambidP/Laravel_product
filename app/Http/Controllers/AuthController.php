@@ -27,10 +27,9 @@ public function register(Request $request)
     {
         $registerData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'password' => 'required|string|max:20',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|confirmed',
         ]);
-        // dd($registerData);
 
         $user = User::create([
             'name'=> $registerData['name'],
@@ -39,12 +38,8 @@ public function register(Request $request)
         ]);
 
         $accessToken = $user->createToken('authToken')->accessToken;
-                
-        // return response()->json([
-        //     'user' => $user,
-        //     'access_token' => $accessToken,
-        // ], 201);
-        return redirect('/login')->with('success', 'Registration successful!');  
+
+        return redirect('/login');  
 }
 
 public function login(Request $request){
@@ -52,56 +47,24 @@ public function login(Request $request){
     $logInData = $request->validate([
         'email' => 'required|string|email',
         'password' => 'required|string',
-    ]);
+    ]); 
 
     if(!auth::attempt($logInData)){
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
     $user = Auth::user()->id;
-    // dd($user);
     $users = User::find($user);
     $accessToken = $users->createToken('authToken')->accessToken;
-
-    // return response()->json([
-    //     'user' => $user,
-    //     'access_token' => $accessToken,
-    // ]);
-    return redirect('/category')->with('success', 'Login successful!');
-    
-}
+    return redirect('/product');
 }
 
+public function logout(Request $request){
+    auth::guard('web')->logout();
 
-// public function login(Request $request){
-//     // dd($request->all());
-    
-//     $request->validate([
-//         'name' => 'required|string|max:255',
-//         'email' => 'required|string|max:255',
-//         'password' => 'required|string|max:20',
-//     ]);
+    $request -> session()->invalidate();
+    $request -> session() -> regenerateToken() ;
 
-//     User::create([
-//         "name" => $request->name,
-//         "email"=> $request->email,
-//         "password"=> $request->password,
-//     ]);
-//     return redirect("category");
-// }
-// public function register(Request $request){
-//     // dd($request->all());
-//     $request->validate([
-//         'name' => 'required|string|max:255',
-//         'email' => 'required|string|max:255',
-//         'password' => 'required|string|max:20',
-//     ]);
-
-//     User::create([
-//         "name" => $request->name,
-//         "email"=> $request->email,
-//         "password"=> $request->password,
-//     ]);
-//     return redirect("login");
-// }
-
+    return redirect('/login');
+    }
+}

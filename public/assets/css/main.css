@@ -15,7 +15,9 @@
     font-weight: 700;
 }
 
-
+.margin-left{
+    margin-left: 40px !important;
+}
 
 
 /* .page{

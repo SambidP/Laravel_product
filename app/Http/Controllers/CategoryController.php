@@ -32,15 +32,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'category_id' => 'required|integer',
             'name' => 'required|string|max:255',
+            'display_name' => 'required|string|max:255',
+            'code' => 'required|integer|max:10',
+            'image_path' => 'string|max:255',
             'description' => 'required|string|max:255',
-            'products' => 'required|string|max:255',
         ]);
 
         Category::create([
+            'category_id' => $request->category_id,
             'name' => $request->name,
+            'display_name' => $request->display_name,
+            'code' => $request->code,
+            'image_path' => $request->image_path,
             'description' => $request->description,
-            'products' => $request->products ,
         ]);
 
         return redirect('/category')->with('name','Category Created Successfully');
@@ -68,15 +74,21 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
+            'category_id' => 'required|integer',
             'name' => 'required|string|max:255',
+            'display_name' => 'required|string|max:255',
+            'code' => 'required|integer|max:10',
+            'image_path' => 'string|max:255',
             'description' => 'required|string|max:255',
-            'products' => 'required|string|max:255',
         ]);
 
         $category->update([
+            'category_id' => $request->category_id,
             'name' => $request->name,
+            'display_name' => $request->display_name,
+            'code' => $request->code,
+            'image_path' => $request->image_path,
             'description' => $request->description,
-            'products' => $request->products,
         ]);
 
         return redirect('/category');

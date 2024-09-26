@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class AuthController extends Controller{
 public function register_view(){
@@ -38,7 +39,6 @@ public function register(Request $request)
         ]);
 
         $accessToken = $user->createToken('authToken')->accessToken;
-
         return redirect('/login');  
 }
 
@@ -66,5 +66,9 @@ public function logout(Request $request){
     $request -> session() -> regenerateToken() ;
 
     return redirect('/login');
+    }
+
+    public function index_for(){
+        return Product::get();
     }
 }

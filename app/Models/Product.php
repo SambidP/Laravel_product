@@ -20,8 +20,4 @@ class Product extends Model
         'description',
         'category_id',
     ];
-
-    public function categories(){
-        return $this->hasMany('App\Models\Category','category_id', 'category_id');
-    }
 }

@@ -12,12 +12,12 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('category.update', $category->id) }}" method="POST">
+                        <form action="{{ route('category.update', $category->category_id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label class="bold-label">Category-id</label>
-                                <input type="number" name="category_id" class="form-control" value="{{ $category->category_id }}" />
+                                <input type="text" name="category_id" class="form-control" value="{{ $category->category_id }}" />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Name</label>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Code</label>
-                                <input type="number" name="code" class="form-control" value="{{ $category->code }}" />
+                                <input type="text" name="code" class="form-control" value="{{ $category->code }}" />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Image</label>

@@ -56,7 +56,7 @@ public function login(Request $request){
     $user = Auth::user()->id;
     $users = User::find($user);
     $accessToken = $users->createToken('authToken')->accessToken;
-    return redirect('/product');
+    return redirect('/category');
 }
 
 public function logout(Request $request){

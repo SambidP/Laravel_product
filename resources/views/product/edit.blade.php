@@ -12,30 +12,36 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('product.update', $product->id) }}" method="POST">
+                        <form action="{{ route('product.update', $product->product_id) }}" method="POST">
                             @csrf
                             @method('PUT')
-
+                            <div class="mb-3">
+                                <label class="bold-label">Product-id</label>
+                                <input type="text" name="product_id" class="form-control" value="{{ $product->product_id }}" />
+                            </div>
                             <div class="mb-3">
                                 <label class="bold-label">Name</label>
                                 <input type="text" name="name" class="form-control" value="{{ $product->name }}" />
-                                @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label class="bold-label">Display-name</label>
+                                <input type="text" name="display_name" class="form-control" value="{{ $product->display_name }}" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="bold-label">Code</label>
+                                <input type="text" name="code" class="form-control" value="{{ $product->code }}" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="bold-label">Image</label>
+                                <input type="text" name="image_path" class="form-control" value="{{ $product->image_path }}" />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Description</label>
                                 <textarea name="description" rows="3" class="form-control">{!! $product->description !!}</textarea>
-                                @error('description') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="bold-label">Category</label>
-                                <br/>
-                                <input type="text" name="category" class="form-control" value="{{ $product->category }} " />
-                                @error('category') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-outline-primary">Update</button>
                             </div>
-
                         </form>
                     </div>
                 </div>

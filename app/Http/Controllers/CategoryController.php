@@ -31,25 +31,26 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'category_id' => 'required|integer',
-            'name' => 'required|string|max:255',
-            'display_name' => 'required|string|max:255',
-            'code' => 'required|integer|max:10',
-            'image_path' => 'string|max:255',
-            'description' => 'required|string|max:255',
-        ]);
+   
+            $request->validate([
+                'category_id' => 'required',
+                'name' => 'required|string|max:255',
+                'display_name' => 'required|string|max:255',
+                'code' => 'required|integer',
+                'image_path' => 'required|mimes:jpg,png,pdf|max:2048',
+                'description' => 'required|string',
+            ]);
+
 
         Category::create([
             'category_id' => $request->category_id,
             'name' => $request->name,
             'display_name' => $request->display_name,
             'code' => $request->code,
-            'image_path' => $request->image_path,
+            'image_path' => $request->file('image_path'),
             'description' => $request->description,
         ]);
-
-        return redirect('/category')->with('name','Category Created Successfully');
+        return redirect('/category');
     }
 
     /**
@@ -77,9 +78,9 @@ class CategoryController extends Controller
             'category_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'display_name' => 'required|string|max:255',
-            'code' => 'required|integer|max:10',
-            'image_path' => 'string|max:255',
-            'description' => 'required|string|max:255',
+            'code' => 'required|integer',
+            'image_path' => 'required|mimes:jpg,png,pdf|max:2048',
+            'description' => 'required|string',
         ]);
 
         $category->update([
@@ -87,7 +88,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'display_name' => $request->display_name,
             'code' => $request->code,
-            'image_path' => $request->image_path,
+            'image_path' => $request->file('image_path'),
             'description' => $request->description,
         ]);
 
@@ -100,6 +101,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('/category');
+        return redirect('/category')->with('category_id','Category Deleted Successfully');
     }
 }

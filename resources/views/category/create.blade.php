@@ -12,11 +12,11 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('category.store') }}" method="POST">
+                        <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="bold-label">Category-id</label>
-                                <input type="number" name="category_id" class="form-control" />
+                                <input type="text" name="category_id" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Name</label>
@@ -28,11 +28,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Code</label>
-                                <input type="number" name="code" class="form-control" />
+                                <input type="text" name="code" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Image</label>
-                                <input type="text" name="image_path" class="form-control" />
+                                <input type="file" name="image_path" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Description</label>
@@ -41,12 +41,10 @@
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-outline-primary">Save</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

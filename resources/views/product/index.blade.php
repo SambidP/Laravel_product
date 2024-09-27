@@ -6,16 +6,17 @@
         <div class="row">
             <div class="col-md-12">
 
-                @session('category')
+                @session('product')
                 <div class="alert alert-success">
-                    {{ session('category') }}
+                    {{ session('product') }}
                 </div>
                 @endsession
 
                 <div class="card">
                     <div class="card-header">
                         <h4>Products List
-                            <a href="{{ url('product/create') }}" class="btn btn-outline-primary float-end">Add Product</a>
+                            <a href="{{ route('category.index') }}" class="btn btn-outline-warning float-end">Back to Categories</a>
+                            <a href="{{ route('product.create',['category_id' => $category_id]) }}" class="btn btn-outline-primary float-end">Add a Product</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -23,24 +24,26 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Code</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Category</th>
+                                    <th>Display-Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->product_id }}</td>
+                                    <td>{{ $product->code }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->description }}</td>
-                                    <td>{{ $product->category }}</td>
+                                    <td>{{ $product->display_name }}</td>
                                     <td>
-                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-outline-success">Edit</a>
-                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-info">Show</a>
+                                        <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a href="{{ route('product.show', $product->product_id) }}" class="btn btn-outline-info">Show</a>
 
-                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('product.destroy', $product->product_id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger">Delete</button>
@@ -51,7 +54,7 @@
                             </tbody>
                         </table>
 
-                        {{ $products->links() }}
+                        {{-- {{ $products->links() }} this is for pagination, implementing later--}}
                     </div>
                 </div>
             </div>

@@ -10,12 +10,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(10);
-        return view('product.index', [
-            'products' => $products
-        ]);
+        $category_id = $request->input("category_id");
+        $products = Product::where("category_id", $category_id)->get();
+        return view('product.index', ['products'=> $products, 'category_id' => $category_id]);
     }
 
     /**
@@ -32,18 +31,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'product_id' => 'required|integer',
             'name' => 'required|string|max:255',
+            'display_name' => 'required|string|max:255',
+            'code' => 'required|integer',
+            'image_path' => 'string|max:255',
             'description' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
+            'category_id' => 'required|integer',
         ]);
 
         Product::create([
+            'product_id' => $request->product_id,
             'name' => $request->name,
+            'display_name' => $request->display_name,
+            'code' => $request->code,
+            'image_path' => $request->image_path,
             'description' => $request->description,
-            'category' => $request->category ,
+            'category_id' => $request->category_id,
         ]);
 
-        return redirect('/product')->with('id','Product Created Successfully');
+        return redirect('/product')->with('product_id','Product Created Successfully');
     }
 
     /**
@@ -68,18 +75,24 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
+            'product_id' => 'required|integer',
             'name' => 'required|string|max:255',
+            'display_name' => 'required|string|max:255',
+            'code' => 'required|integer',
+            'image_path' => 'string|max:255',
             'description' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
         ]);
 
         $product->update([
+            'product_id' => $request->product_id,
             'name' => $request->name,
+            'display_name' => $request->display_name,
+            'code' => $request->code,
+            'image_path' => $request->image_path,
             'description' => $request->description,
-            'category' => $request->category,
         ]);
 
-        return redirect('/product')->with('id','Product Updated Successfully');
+        return redirect('/product')->with('product_id','Product Updated Successfully');
     }
 
     /**
@@ -88,6 +101,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect('/product')->with('id','Product Deleted Successfully');
+        return redirect('/product')->with('product_id','Product Deleted Successfully');
     }
 }

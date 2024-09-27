@@ -22,8 +22,8 @@
 </head>
 <body class="page">
 <section id="nav-bar">
-  <nav class="navbar navbar-expand-lg navbar-light p-4">
-    <a class="navbar-brand" href="/">
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <a class="navbar-brand text-white" href="/">
         <img src="/assets/img/laravel_icon_1.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Product App
       </a>
@@ -33,20 +33,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto ">
         <li class="nav-item">
-            <a class="nav-link" href="/product/create" " >Create Product</a>
+            <a class="nav-link active text-white" href="/product/create" " >Create Product</a>
           </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/category/create" ">Create Category</a>
+        <li class="nav-item ">
+          <a class="nav-link active text-white" href="/category/create" ">Create Category</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/product" ">Product Listing</a>
+          <a class="nav-link active text-white" href="/product" ">Product Listing</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="/category" ">Category Listing</a>
+            <a class="nav-link active text-white" href="/category" ">Category Listing</a>
           </li> 
           <form action="/logout" method="post">
             @csrf
-            <button type="submit" class="btn btn-info">
+            <button type="submit" class="btn btn-outline-info">
               Logout
             </button>
           </form>       

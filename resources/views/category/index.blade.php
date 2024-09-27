@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('layouts.category')
 
 @section('content')
 
@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Categories List
-                            <a href="{{ url('category/create') }}" class="btn btn-primary float-end">Add Category</a>
+                            <a href="{{ url('category/create') }}" class="btn btn-outline-primary float-end">Add Category</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -32,18 +32,18 @@
                             <tbody>
                                 @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->category_id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td>{{ $category->products }}</td>
+                                    <td>{{ $category->display_name }}</td>
                                     <td>
-                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-success">Edit</a>
-                                        <a href="{{ route('category.show', $category->id) }}" class="btn btn-info">Show</a>
+                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a href="{{ route('category.show', $category->id) }}" class="btn btn-outline-info">Show</a>
 
                                         <form action="{{ route('category.destroy', $category->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

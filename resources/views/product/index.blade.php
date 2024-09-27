@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('layouts.category')
 
 @section('content')
 
@@ -15,7 +15,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Products List
-                            <a href="{{ url('product/create') }}" class="btn btn-primary float-end">Add Product</a>
+                            <a href="{{ url('product/create') }}" class="btn btn-outline-primary float-end">Add Product</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -37,13 +37,13 @@
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->category }}</td>
                                     <td>
-                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-success">Edit</a>
-                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-info">Show</a>
+                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-info">Show</a>
 
                                         <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

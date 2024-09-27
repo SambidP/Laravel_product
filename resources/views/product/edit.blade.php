@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('layouts.category')
 
 @section('content')
 
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Edit Product
-                            <a href="{{ url('product') }}" class="btn btn-danger float-end">Back</a>
+                            <a href="{{ url('product') }}" class="btn btn-outline-danger float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -17,23 +17,23 @@
                             @method('PUT')
 
                             <div class="mb-3">
-                                <label>Name</label>
+                                <label class="bold-label">Name</label>
                                 <input type="text" name="name" class="form-control" value="{{ $product->name }}" />
                                 @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
-                                <label>Description</label>
+                                <label class="bold-label">Description</label>
                                 <textarea name="description" rows="3" class="form-control">{!! $product->description !!}</textarea>
                                 @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
-                                <label>Category</label>
+                                <label class="bold-label">Category</label>
                                 <br/>
                                 <input type="text" name="category" class="form-control" value="{{ $product->category }} " />
                                 @error('category') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-outline-primary">Update</button>
                             </div>
 
                         </form>

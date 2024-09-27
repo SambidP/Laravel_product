@@ -1,9 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* font-family: 'Poppins', sans-serif; */
-}
+
 
 .navbar{
     background: whitesmoke;
@@ -15,15 +10,12 @@
     font-weight: 700;
 }
 
-.margin-left{
-    margin-left: 40px !important;
+
+.page{
+        background-image: url("/assets/img/bg_1.jpg");
 }
 
 
-/* .page{
-    background-color: aqua;
+.bold-label{
+    font-weight: bold;
 }
-
-.card-body{
-    background-color: azure;
-} */

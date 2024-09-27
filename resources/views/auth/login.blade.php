@@ -1,29 +1,29 @@
-@extends('auth.layout')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container mt-5">
+<div class="container-fluid mt-5">
   <div class="row">
       <div class="col d-flex justify-content-center">
-          <div class="card text-black bg-info mb-3" style="width: 18rem;">
-              <div class="card-header">
-                  <h4>Log-in
-                      <a href="{{ url('/') }}" class="btn btn-danger float-end">Back</a>
+          <div class="card text-white mb-3 bg-dark" style="width: 20rem;">
+              <div class="card-header font-sans-serif">
+                  <h4>Login
+                      <a href="{{ url('/') }}" class="btn-close btn-close-white float-end "></a>
                   </h4>
               </div>
               <div class="card-body">
                   <form action="/login" method="POST">
-                      @csrf
-                      <div class="mb-3">
-                          <label>Email</label>
-                          <input name="email" type="text" ></input>
+                    @csrf
+                    <div class="form-floating mb-3 text-black">
+                        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
                       </div>
-                      <div class="mb-3">
-                          <label>Password</label>
-                          <br/>
-                          <input type="password" name="password" /> 
+                      <div class="form-floating mb-3 text-black">
+                        <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
                       </div>
-                      <div class="mb-3">
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                      <a href="/" class="card-link">Forgot Password?</a>
+                      <div class="mt-3">
+                          <button type="submit" class="btn btn-outline-success">Submit</button>
                       </div>
 
                   </form>

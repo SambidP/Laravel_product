@@ -1,4 +1,4 @@
-@extends('category.layout')
+@extends('layouts.category')
 
 @section('content')
 
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Show Category Detail
-                            <a href="{{ url('category') }}" class="btn btn-danger float-end">Back</a>
+                            <a href="{{ url('category') }}" class="btn btn-outline-danger float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">

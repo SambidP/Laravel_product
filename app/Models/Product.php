@@ -9,9 +9,19 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $primaryKey="product_id";
     protected $table = "products";
     protected $fillable = [
+        'product_id',
         'name',
+        'display_name',
+        'code',
+        'image_path',
         'description',
-        'category'];
+        'category_id',
+    ];
+
+    public function categories(){
+        return $this->hasMany('App\Models\Category','category_id', 'category_id');
+    }
 }

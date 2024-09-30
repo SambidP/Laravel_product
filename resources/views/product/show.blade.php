@@ -13,6 +13,12 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
+                            <label>ID</label>
+                            <p>
+                                {{ $product->product_id }}
+                            </p>
+                        </div>
+                        <div class="mb-3">
                             <label>Name</label>
                             <p>
                                 {{ $product->name }}
@@ -28,7 +34,7 @@
                             <label>category</label>
                             <br/>
                             <p>
-                                {{ $product->category }}
+                                {{ $product->code }}
                             </p>
                         </div>
                     </div>

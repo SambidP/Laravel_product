@@ -24,7 +24,7 @@
 <section id="nav-bar">
   <nav class="navbar navbar-expand-lg bg-dark">
     <a class="navbar-brand text-white" href="/">
-        <img src="/assets/img/laravel_icon_1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="/assets/img/laravel_icon_1.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
         Product App
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" ">
@@ -37,9 +37,6 @@
           </li>
         <li class="nav-item ">
           <a class="nav-link active text-white" href="/category/create" ">Create Category</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-white" href="/product" ">Product Listing</a>
         </li>
         <li class="nav-item active">
             <a class="nav-link active text-white" href="/category" ">Category Listing</a>

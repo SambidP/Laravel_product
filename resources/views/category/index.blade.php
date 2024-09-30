@@ -23,9 +23,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Code</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Products</th>
+                                    <th>Display-Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -33,14 +34,16 @@
                                 @foreach ($categories as $category)
                                 <tr>
                                     <td>{{ $category->category_id }}</td>
+                                    <td>{{ $category->code }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
                                     <td>{{ $category->display_name }}</td>
                                     <td>
-                                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-outline-success">Edit</a>
-                                        <a href="{{ route('category.show', $category->id) }}" class="btn btn-outline-info">Show</a>
+                                        <a href="{{ route('category.edit', $category->category_id) }}" class="btn btn-outline-success">Edit</a>
+                                        <a href="{{ route('category.show', $category->category_id) }}" class="btn btn-outline-info">Show</a>
+                                        <a href="{{ route('product.index') }}?category_id={{ $category->category_id }}" class="btn btn-outline-secondary">View Products</a>
 
-                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('category.destroy', $category->category_id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger">Delete</button>
@@ -57,5 +60,4 @@
             </div>
         </div>
     </div>
-
 @endsection

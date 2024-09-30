@@ -25,7 +25,7 @@
   <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand text-white" href="/">
-          <img src="/assets/img/laravel_icon_1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          <img src="/assets/img/laravel_icon_1.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
           Product App
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

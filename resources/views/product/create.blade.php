@@ -12,30 +12,42 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('product.store') }}" method="POST">
-                            @csrf
-
-                            <div class="mb-3">
-                                <label class="bold-label">Name</label>
-                                <input type="text" name="name" class="form-control" />
-                                {{-- @error('name') <span class="text-danger">{{ $message }}</span> @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label class="bold-label">Description</label>
-                                <textarea name="description" rows="3" class="form-control"></textarea>
-                                {{-- @error('description') <span class="text-danger">{{ $message }}</span> @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label class="bold-label">Category</label>
-                                <br/>
-                                <input type="text" name="category" class="form-control"/>
-                                {{-- @error('status') <span class="text-danger">{{ $message }}</span> @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-outline-primary">Save</button>
-                            </div>
-
-                        </form>
+                        <div class="card-body">
+                            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label class="bold-label">Product-id</label>
+                                    <input type="text" name="product_id" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="bold-label">Name</label>
+                                    <input type="text" name="name" class="form-control"  />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="bold-label">Display-name</label>
+                                    <input type="text" name="display_name" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="bold-label">Code</label>
+                                    <input type="text" name="code" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image_path"class="bold-label">Image</label>
+                                    <input type="file" name="image_path" class="form-control" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="bold-label">Description</label>
+                                    <textarea name="description" rows="3" class="form-control"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-3">
+                                        <label class="bold-label">Category-id</label>
+                                        <input type="text" name="category_id" class="form-control" value="{{ old('category_id', request()->input('category_id')) }}" readonly />
+                                        {{-- <input type="number" name="category_id" class="form-control" /> --}}
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-primary">Save</button>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>

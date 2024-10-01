@@ -2,13 +2,13 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>Create Product
-                            <a href="{{ url('product') }}" class="btn btn-outline-danger float-end">Back</a>
+                            <a href="{{ url('category') }}" class="btn btn-outline-danger float-end">Back</a>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -42,8 +42,7 @@
                                 <div class="mb-3">
                                     <div class="mb-3">
                                         <label class="bold-label">Category-id</label>
-                                        <input type="text" name="category_id" class="form-control" value="{{ old('category_id', request()->input('category_id')) }}" readonly />
-                                        {{-- <input type="number" name="category_id" class="form-control" /> --}}
+                                        <input type="text" name="category_id" class="form-control"/>
                                     </div>
                                     <button type="submit" class="btn btn-outline-primary">Save</button>
                                 </div>
@@ -55,3 +54,5 @@
     </div>
 
 @endsection
+
+{{-- value="{{ old('category_id', request()->input('category_id')) }}" --}}

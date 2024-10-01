@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Image</label>
-                                <input type="file" name="image_path" class="form-control" />
+                                <input type="file" name="image_path" class="form-control" accept=".jpg,.png,.pdf,.jpeg" required />
                             </div>
                             <div class="mb-3">
                                 <label class="bold-label">Description</label>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
 
@@ -14,7 +14,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Products List
+                        <h4>{{ $category->name }} products
                             <a href="{{ route('category.index') }}" class="btn btn-outline-warning float-end">Back to Categories</a>
                             <a href="{{ route('product.create',['category_id' => $category_id]) }}" class="btn btn-outline-primary float-end">Add a Product</a>
                         </h4>
@@ -27,7 +27,6 @@
                                     <th>Code</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Display-Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -38,7 +37,6 @@
                                     <td>{{ $product->code }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->description }}</td>
-                                    <td>{{ $product->display_name }}</td>
                                     <td>
                                         <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('product.show', $product->product_id) }}" class="btn btn-outline-info">Show</a>
@@ -53,8 +51,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-                        {{-- {{ $products->links() }} this is for pagination, implementing later--}}
                     </div>
                 </div>
             </div>

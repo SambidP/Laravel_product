@@ -2,16 +2,9 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
-
-                {{-- @session('status')
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-                @endsession --}}
-
                 <div class="card">
                     <div class="card-header">
                         <h4>Categories List
@@ -26,7 +19,6 @@
                                     <th>Code</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Display-Name</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -37,7 +29,6 @@
                                     <td>{{ $category->code }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td>{{ $category->display_name }}</td>
                                     <td>
                                         <a href="{{ route('category.edit', $category->category_id) }}" class="btn btn-outline-success">Edit</a>
                                         <a href="{{ route('category.show', $category->category_id) }}" class="btn btn-outline-info">Show</a>

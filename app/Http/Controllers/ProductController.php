@@ -15,15 +15,15 @@ class ProductController extends Controller
         return view('product.index', compact('category', 'products', 'category_id'));
     }
 
-    public function create()
+    public function create(Product $product)
     {
-        return view('product.create');
+        $categories = Category::all();
+        return view('product.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'product_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'display_name' => 'required|string|max:255',
             'code' => 'required|integer',
@@ -40,7 +40,6 @@ class ProductController extends Controller
             $request->file('image_path')->move(public_path($imagePath), $filename);
         
             Product::create([
-                'product_id' => $request->product_id,
                 'name' => $request->name,
                 'display_name' => $request->display_name,
                 'code' => $request->code,
@@ -58,24 +57,24 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        
         return view('product.show', compact('product'));
     }
 
     public function edit(Product $product)
     {
+        $categories = Category::all();
         return view('product.edit', compact('product'));
     }
 
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'product_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'display_name' => 'required|string|max:255',
             'code' => 'required|integer',
             'image_path' => 'nullable|mimes:jpg,png,jpeg|max:2048',
             'description' => 'required|string|max:255',
-            'category_id' => 'required|integer',
         ]);
         $imagePath = $product->image_path; 
 
@@ -94,13 +93,11 @@ class ProductController extends Controller
         }
     }
         $product->update([
-            'product_id' => $request->product_id,
             'name' => $request->name,
             'display_name' => $request->display_name,
             'code' => $request->code,
             'image_path' => $imagePath,
             'description' => $request->description,
-            'category_id' => $request->category_id,
         ]);
 
         return redirect('/category')->with('success','Product Updated Successfully');

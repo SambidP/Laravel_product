@@ -14,7 +14,6 @@ public function register_view(){
     
     return view("auth.login");
 }
-
 public function index(){
     return view('auth.register');
 }
@@ -52,7 +51,6 @@ public function login(Request $request){
     if(!auth::attempt($logInData)){
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
-
     $user = Auth::user()->id;
     $users = User::find($user);
     $accessToken = $users->createToken('authToken')->accessToken;

@@ -14,7 +14,7 @@
                   <form action="/login" method="POST">
                     @csrf
                     <div class="form-floating mb-3 text-black">
-                        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email Address" autocomplete="off">
                         <label for="floatingInput">Email address</label>
                       </div>
                       <div class="form-floating mb-3 text-black">

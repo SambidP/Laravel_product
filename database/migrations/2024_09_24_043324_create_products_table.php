@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('display_name');
             $table->string('code');
             $table->string('image_path');
-            $table->string('description');
+            $table->longText('description');
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
         });

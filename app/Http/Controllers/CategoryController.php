@@ -23,7 +23,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'category_id' => 'required|integer',
             'name' => 'required|string|max:255',
             'display_name' => 'required|string|max:255',
             'code' => 'required|integer',
@@ -40,7 +39,6 @@ class CategoryController extends Controller
             $request->file('image_path')->move(public_path($imagePath), $filename);
         
             Category::create([
-                'category_id' => $request->category_id,
                 'name' => $request->name,
                 'display_name' => $request->display_name,
                 'code' => $request->code,
@@ -69,7 +67,6 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
 {
     $request->validate([
-        'category_id' => 'required|integer',
         'name' => 'required|string|max:255',
         'display_name' => 'required|string|max:255',
         'code' => 'required|integer',
@@ -93,7 +90,6 @@ class CategoryController extends Controller
         }
     }
     $category->update([
-        'category_id' => $request->category_id,
         'name' => $request->name,
         'display_name' => $request->display_name,
         'code' => $request->code,

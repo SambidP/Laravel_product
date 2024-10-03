@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -20,8 +21,11 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {   
+        if (!Gate::allows('store', $category)) {
+            abort(403);
+        }
         $request->validate([
             'name' => 'required|string|max:255',
             'display_name' => 'required|string|max:255',
@@ -102,6 +106,9 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        if (!Gate::allows('delete', $category)) {
+            abort(403);
+        }
         $category->delete();
         return redirect('/category')->with('category_id','Category Deleted Successfully');
     }

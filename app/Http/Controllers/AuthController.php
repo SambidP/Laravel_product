@@ -18,7 +18,6 @@ public function index(){
     return view('auth.register');
 }
 
-
 public function welcome(){
     return view("welcome");
 }

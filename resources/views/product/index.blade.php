@@ -1,4 +1,4 @@
-@extends('layouts.category')
+@extends('layouts.navbar')
 
 @section('content')
 <div class="container mt-4">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label bold-label">{{ $category->display_name }}</label><br>
-                        <img src="{{ asset($category->image_path) }}" class="img-thumbnail" width="150" />
+                        <img src="{{ asset($category->image_path) }}" class="rounded" width="150" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label bold-label">Description</label>
@@ -57,7 +57,7 @@
                                 <td>{{ $product->product_id }}</td>
                                 <td>{{ $product->code }}</td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ Str::limit($product->description, 50) }}</td>
+                                <td>{{ Str::limit($product->description, 30) }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-outline-success btn-sm">Edit</a>
                                     <a href="{{ route('product.show', $product->product_id) }}" class="btn btn-outline-info btn-sm">Show</a>

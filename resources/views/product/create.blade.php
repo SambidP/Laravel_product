@@ -1,4 +1,4 @@
-@extends('layouts.category')
+@extends('layouts.navbar')
 
 @section('content')
 <div class="container mt-4">

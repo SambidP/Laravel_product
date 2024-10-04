@@ -6,7 +6,7 @@
         <img src="/assets/img/welc_1.webp" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Categorize your products</h5>
-          <p class="card-text">Distinctly place your products into categories using this web-app.</p>
+          <p class="card-text">Distinctly place your products into categories using this website.</p>
         </div>
       </div>
     <div class="card">

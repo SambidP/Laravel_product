@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+
+    private function isAdmin()
+    {
+        $user = Auth::user();
+        return $user->roles->contains('name', 'admin');
+    }
     public function index()
     {
         $categories = Category::paginate(10);
@@ -18,19 +24,19 @@ class CategoryController extends Controller
 
     public function create()
     {
+        if (!$this->isAdmin()) {
+            return redirect()->route('category.index')->with('error', 'Access denied. Admins only.');
+        }
         return view('category.create');
     }
 
     public function store(Request $request, Category $category)
     {   
-        if (!Gate::allows('store', $category)) {
-            abort(403);
-        }
         $request->validate([
             'name' => 'required|string|max:255',
             'display_name' => 'required|string|max:255',
             'code' => 'required|integer',
-            'image_path' => 'mimes:jpg,png,jpeg|max:2048',
+            'image_path' => 'mimes:jpg,png,jpeg,webp|max:2048',
             'description' => 'required|string',
         ]);
 
@@ -64,17 +70,24 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
+        if (!$this->isAdmin()) {
+            return redirect()->route('category.index')->with('error', 'Access denied. Admins only.');
+        }
         return view('category.edit', compact('category'));
     }
 
 
     public function update(Request $request, Category $category)
-{
+    {
+    if (!$this->isAdmin()) {
+        return redirect()->route('category.index')->with('error', 'Access denied. Admins only.');
+    }
+
     $request->validate([
         'name' => 'required|string|max:255',
         'display_name' => 'required|string|max:255',
         'code' => 'required|integer',
-        'image_path' => 'nullable|mimes:jpg,png,jpeg|max:2048',
+        'image_path' => 'nullable|mimes:jpg,png,jpeg,webp|max:2048',
         'description' => 'required|string',
     ]);
     $imagePath = $category->image_path; 
@@ -106,10 +119,13 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        if (!Gate::allows('delete', $category)) {
-            abort(403);
+        if (!$this->isAdmin()) {
+            return redirect()->back()->with('error', 'Access denied. Admins only.');
+        }
+        if ($category->image_path && file_exists(public_path($category->image_path))) {
+            unlink(public_path($category->image_path));
         }
         $category->delete();
-        return redirect('/category')->with('category_id','Category Deleted Successfully');
+        return redirect('/category')->with('success','Category Deleted Successfully');
     }
 }

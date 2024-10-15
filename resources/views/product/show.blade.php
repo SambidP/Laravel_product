@@ -2,6 +2,19 @@
 
 @section('content')
 
+<div class="container mt-5">
+    @if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+</div>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">

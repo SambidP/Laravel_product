@@ -1,7 +1,19 @@
-@extends('layouts.welcome')
+@extends('layouts.navbar')
 
 @section('content')
-<div class="card-group mt-4">
+<div class="mt-4">
+  @if (session('error'))
+    <div class="alert alert-danger">
+      {{ session('error') }}
+    </div>
+  @endif
+  @if (session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+</div>
+@endif
+<div class="card-group mt-2">
     <div class="card">
         <img src="/assets/img/welc_1.webp" class="card-img-top" alt="...">
         <div class="card-body">

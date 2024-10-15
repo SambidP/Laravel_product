@@ -1,6 +1,10 @@
 @extends('layouts.auth')
-
 @section('content')
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 <div class="container-fluid mt-5">
   <div class="row">
       <div class="col d-flex justify-content-center">

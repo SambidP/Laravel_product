@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller{
 public function register_view(){
@@ -37,7 +38,8 @@ public function register(Request $request)
         ]);
 
         $accessToken = $user->createToken('authToken')->accessToken;
-        return redirect('/login');  
+        event(new Registered($user));
+        return redirect('/login')->with('success','User Registration Successful');  
 }
 
 public function login(Request $request){
@@ -53,7 +55,7 @@ public function login(Request $request){
     $user = Auth::user()->id;
     $users = User::find($user);
     $accessToken = $users->createToken('authToken')->accessToken;
-    return redirect('/category');
+    return redirect('/category')->with('success','User logged in successfully');
 }
 
 public function logout(Request $request){
@@ -62,10 +64,21 @@ public function logout(Request $request){
     $request -> session()->invalidate();
     $request -> session() -> regenerateToken() ;
 
-    return redirect('/login');
+    return redirect('/')->with('success','User logged out successfully');
     }
 
     public function index_for(){
         return Product::get();
     }
 }
+
+    //role
+    // $admin = User::whereName('Admin')->with('roles')->first();
+    // $admin_role = Role::whereName('admin')->first();
+    // $admin->roles()->attach($admin_role);
+    // dd($admin->toArray());
+    //permission
+    // $delete_category_permission = Permission::whereName('delete-category')->first();
+    // $admin_role = Role::whereName('admin')->first();
+    // $admin_role->permissions()->attach($delete_category_permission);
+    // dd($admin_role->permissions);

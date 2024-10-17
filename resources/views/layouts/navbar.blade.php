@@ -21,12 +21,23 @@
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <form action="/logout" method="post" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-info">
-                                Logout
-                            </button>
-                        </form>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark border-0" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item text-white" href="#">Profile</a></li>
+                                <li><a class="dropdown-item text-white" href="#">Admin Dashboard</a></li>
+                                <li><hr class="dropdown-divider bg-light"></li>
+                                <li>
+                                    <form action="/logout" method="post" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-white">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -44,19 +55,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/category">Category Listing</a>
                     </li>
-                    <li class="nav-item dropdown ms-1">
-                        <a class="btn text-light dropdown-toggle border-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Create
                         </a>
-                        <ul class="dropdown-menu bg-dark border-0">
+                        <ul class="dropdown-menu bg-dark border-0 ms-1">
                             <li><a class="nav-link" href="/product/create">Create Product</a></li>
                             <li><a class="nav-link" href="/category/create">Create Category</a></li>
                         </ul>
                     </li>
+                    
                 </ul>
             </aside>
             <main class="col-md-9 col-lg-10 main-content">
-                <div class="container">
+                <div class="container mt-5">
                     @yield('content')
                 </div>
             </main>

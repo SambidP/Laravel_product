@@ -2,20 +2,19 @@
 
 @section('content')
 
-<div class="container mt-4">
-    @if (session('error'))
-<div class="alert alert-danger">
-    {{ session('error') }}
-</div>
-@endif
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
-
 </div>
 <div class="container mt-4">
+    <div class="container mt-4">
+        @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card shadow-lg border-0 rounded-3 flex-wrap">

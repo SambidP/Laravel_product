@@ -49,8 +49,9 @@ public function login(Request $request){
         'password' => 'required|string',
     ]); 
 
-    if(!auth::attempt($logInData)){
-        return response()->json(['message' => 'Invalid credentials'], 401);
+    if (!Auth::attempt($request->only('email', 'password'))) {
+        session()->flash('error', 'Invalid credentials');
+        return redirect()->back()->withInput();
     }
     $user = Auth::user()->id;
     $users = User::find($user);

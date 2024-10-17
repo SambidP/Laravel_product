@@ -2,8 +2,6 @@
     font-size: 1.4rem;
     font-weight: 700;
 }
-
-
 .page{
         background-image: url("/assets/img/bg__1.png");
         background-size:contain ;
@@ -19,14 +17,6 @@
 }
 body, html {
     height: 100%;
-}
-.sidebar {
-    height: 100vh; 
-    position: fixed; 
-    top: 4;
-    left: 0;
-    z-index: 1000; 
-    overflow-y: auto; 
 }
 main {
     margin-left: 250px;

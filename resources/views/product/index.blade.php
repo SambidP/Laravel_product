@@ -1,6 +1,20 @@
 @extends('layouts.navbar')
 
 @section('content')
+
+<div class="container mt-4">
+    @if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+</div>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-4">
@@ -59,7 +73,7 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ Str::limit($product->description, 30) }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-outline-success btn-sm">Edit</a>
+                                    <a href="{{ route('product.edit', $product->product_id) }}" class="btn btn-outline-secondary btn-sm">Edit</a>
                                     <a href="{{ route('product.show', $product->product_id) }}" class="btn btn-outline-info btn-sm">Show</a>
                                     <form action="{{ route('product.destroy', $product->product_id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                         @csrf

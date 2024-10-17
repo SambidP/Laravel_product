@@ -4,11 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\AuthController;
 
 
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:api');
-// Route::resource("category",CategoryController::class)->Middleware([Authenticate::class]);
-// Route::resource("product",ProductController::class)->middleware([Authenticate::class]);
+// Route::group(['middleware' => ['auth']], function (){
+//     Route::resource("category",CategoryController::class);
+//     Route::resource("product",ProductController::class);
+//     Route::post("/logout", [AuthController::class,'logout']);
+// });
+

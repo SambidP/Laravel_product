@@ -1,14 +1,24 @@
 @extends('layouts.navbar')
 @section('content')
+
 <div class="container mt-4">
+
+@if (session('error'))
+ <div class="alert alert-danger">
+    {{ session('error') }}
+ </div>
+@endif
+@if (session('success'))
+ <div class="alert alert-success">
+    {{ session('success') }}
+ </div>
+@endif
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-lg border-0 rounded-3">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0">Categories List
-                        @if(auth()->user()->id === 1)
                         <a href="{{ url('category/create') }}" class="btn btn-outline-light float-end">Add Category</a>
-                        @endif
                     </h4>
                 </div>
                 <div class="card-body p-4">
@@ -30,17 +40,13 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ Str::limit($category->description, 50) }}</td>
                                 <td class="text-center">
-                                    @if (auth()->user()->id === 1)
                                     <a href="{{ route('category.edit', $category->category_id) }}" class="btn btn-sm btn-outline-success">Edit</a>
-                                    @endif
                                     <a href="{{ route('product.index') }}?category_id={{ $category->category_id }}" class="btn btn-sm btn-outline-secondary">View Products</a>
-                                    @if (auth()->user()->id === 1)
-                                    <form action="{{ route('category.destroy', $category->category_id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('category.destroy', $category->category_id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this category?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                                     </form>
-                                    @endif
                                 </td>
                             </tr>
                             @endforeach

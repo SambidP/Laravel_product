@@ -23,11 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define("delete", function (User $user, Category $category) {
-            return $user->id === 1;
-    });
-    Gate::define("store", function (User $user, Category $category) {
-        return $user->id === 1;
-});
+
     }
 }

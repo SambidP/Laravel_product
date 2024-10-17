@@ -18,8 +18,7 @@
             <div class="card shadow-lg border-0 rounded-3">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0">Categories List
-                        <a href="{{ url('category/create') }}" class="btn btn-outline-light float-end ms-1">Add Category</a>
-                        <a href="{{ url('category/trash') }}" class="btn btn-outline-light float-end">Go to Trash</a>
+                        <a href="{{ url('category') }}" class="btn btn-outline-light float-end">Back to Category Listing</a>
                     </h4>
                 </div>
                 <div class="card-body p-4">
@@ -41,21 +40,34 @@
                                 <td>{{ $category->name }}</td>
                                 <td>{{ Str::limit($category->description, 50) }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('category.edit', $category->category_id) }}" class="btn btn-sm btn-outline-success">Edit</a>
-                                    <a href="{{ route('product.index') }}?category_id={{ $category->category_id }}" class="btn btn-sm btn-outline-secondary">View Products</a>
-                                    <form action="{{ route('category.destroy', $category->category_id) }}" method="POST" class="d-inline-block" >
+                                    <a href="{{ route('category.restore', $category->category_id) }}" 
+                                        class="btn btn-sm btn-outline-secondary"
+                                        onclick="event.preventDefault(); document.getElementById('restore-form-{{ $category->category_id }}').submit();">
+                                        Restore
+                                    </a>
+                                    
+                                    <form id="restore-form-{{ $category->category_id }}" 
+                                          action="{{ route('category.restore', $category->category_id) }}" 
+                                          method="POST" class="d-none">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Move to Trash</button>
                                     </form>
+                                    
+                                    <a href="#" class="btn btn-sm btn-outline-danger"
+                                        onclick="if(confirm('Are you sure you want to delete this category?')) { event.preventDefault(); document.getElementById('delete-form-{{ $category->category_id }}').submit(); }">
+                                        Delete Permanently
+                                    </a>
+
+                                        <form id="delete-form-{{ $category->category_id }}"
+                                            action="{{ route('category.deletePermanently', $category->category_id) }}"
+                                            method="POST" class="d-none">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center mt-3">
-                        {{ $categories->links() }}
-                    </div>
                 </div>
             </div>
         </div>

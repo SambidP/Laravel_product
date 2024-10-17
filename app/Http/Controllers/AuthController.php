@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\{User,Product};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
+use Illuminate\Support\Facades\{Hash,Auth};
 use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller{

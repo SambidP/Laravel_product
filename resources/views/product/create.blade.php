@@ -31,7 +31,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label font-weight-bold">Code</label>
-                                    <input type="text" name="code" class="form-control border-0 shadow-sm" placeholder="Enter category code" />
+                                    <input type="text" name="code" class="form-control border-0 shadow-sm" placeholder="Enter product code" />
                                 </div>
                             </div>
                             <div class="col-md-6">

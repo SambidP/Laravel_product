@@ -2,7 +2,18 @@
 
 @section('content')
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-4">
+  @if (session('success'))
+  <div class="alert alert-success">
+      {{ session('success') }}
+  </div>
+  @endif
+  
+  @if (session('error'))
+  <div class="alert alert-danger">
+      {{ session('error') }}
+  </div>
+  @endif
   <div class="row">
       <div class="col d-flex justify-content-center">
           <div class="card text-white mb-3 bg-dark" style="width: 20rem;">
@@ -35,7 +46,7 @@
                           <button type="submit" class="btn btn-outline-success">Submit</button>
                       </div>
 
-                  </form>
+                    </form>
               </div>
           </div>
       </div>

@@ -27,7 +27,6 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end bg-dark border-0" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-white" href="#">Profile</a></li>
-                                <li><a class="dropdown-item text-white" href="#">Admin Dashboard</a></li>
                                 <li><hr class="dropdown-divider bg-light"></li>
                                 <li>
                                     <form action="/logout" method="post" class="d-inline">
@@ -37,7 +36,6 @@
                                 </li>
                             </ul>
                         </li>
-                        
                     </ul>
                 </div>
             </div>
@@ -64,7 +62,6 @@
                             <li><a class="nav-link" href="/category/create">Create Category</a></li>
                         </ul>
                     </li>
-                    
                 </ul>
             </aside>
             <main class="col-md-9 col-lg-10 main-content">

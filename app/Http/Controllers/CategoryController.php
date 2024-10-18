@@ -119,13 +119,32 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        if (!$this->isAdmin()) {
-            return redirect()->back()->with('error', 'Access denied. Admins only.');
-        }
-        if ($category->image_path && file_exists(public_path($category->image_path))) {
-            unlink(public_path($category->image_path));
-        }
         $category->delete();
         return redirect('/category')->with('success','Category Deleted Successfully');
     }
-}
+
+    public function restore($id)
+    {
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->restore();
+        return redirect()->route('category.trash')->with('success', 'Category restored successfully.');
+    }
+    
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        return view('category.trash', ['categories' => $categories]);
+    }
+    public function deletePermanently($id)
+    {
+        if (!$this->isAdmin()) {
+            return redirect()->back()->with('error', 'Access denied. Admins only.');
+        }
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+        if ($category->image_path && file_exists(public_path($category->image_path))) {
+            unlink(public_path($category->image_path));
+        }
+        return redirect()->route('category.trash')->with('success', 'Category deleted permanently.');
+    }
+}   

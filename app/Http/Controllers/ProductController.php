@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\{Product,Category};
 use Illuminate\Http\Request;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
@@ -43,9 +42,7 @@ class ProductController extends Controller
         if ($request->file('image_path')->isValid()) 
         {
             $imagePath = 'assets/avatars/';
-            
             $filename = time() . '.' . $request->file('image_path')->getClientOriginalExtension();
-            
             $request->file('image_path')->move(public_path($imagePath), $filename);
         
             Product::create([
@@ -91,9 +88,7 @@ class ProductController extends Controller
         if ($request->file('image_path')->isValid()) 
         {
             $filename = time() . '.' . $request->file('image_path')->getClientOriginalExtension();
-
             $request->file('image_path')->move(public_path('assets/avatars'), $filename);
-
             $imagePath = 'assets/avatars/' . $filename;
         }
          else 
@@ -108,7 +103,7 @@ class ProductController extends Controller
             'image_path' => $imagePath,
             'description' => $request->description,
         ]);
-
+        
         return redirect('/category')->with('success','Product Updated Successfully');
     }
 

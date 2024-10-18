@@ -1,15 +1,11 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProductController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use App\Models\User;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\{Route,Password,Hash};
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\{CategoryController,AuthController,ProductController};
 
 Route::get('/register', [AuthController::class,'index']);
 Route::post('/register', [AuthController::class,'register']);
@@ -17,10 +13,14 @@ Route::post('/register', [AuthController::class,'register']);
 Route::get('/login', [AuthController::class,'register_view'])->name('login');
 Route::post('/login', [AuthController::class,'login']);
 
+Route::get('/category/trash', [CategoryController::class, 'trash'])->name('category.trash');
+
 Route::group(['middleware' => ['auth']], function (){
     Route::resource("category",CategoryController::class);
     Route::resource("product",ProductController::class);
     Route::post("/logout", [AuthController::class,'logout']);
+    Route::post('/category/{id}/restore', [CategoryController::class, 'restore'])->name('category.restore');
+    Route::delete('/category/{id}/delete-permanently', [CategoryController::class, 'deletePermanently'])->name('category.deletePermanently');
 });
 Route::get("/", [AuthController::class,"welcome"]);
 
@@ -31,7 +31,7 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
-    return redirect('/category');
+    return redirect('/category')->with('success','Email verification successful');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
@@ -50,7 +50,7 @@ Route::post('/forgot-password', function (Request $request) {
     $status = Password::sendResetLink(
         $request->only('email')
     );
- 
+    
     return $status === Password::RESET_LINK_SENT
                 ? back()->with(['status' => __($status)])
                 : back()->withErrors(['email' => __($status)]);
@@ -66,7 +66,7 @@ Route::post('/reset-password', function (Request $request) {
         'email' => 'required|email',
         'password' => 'required|min:8|confirmed',
     ]);
- 
+
     $status = Password::reset(
         $request->only('email', 'password', 'password_confirmation', 'token'),
         function (User $user, string $password) {

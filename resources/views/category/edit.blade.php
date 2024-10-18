@@ -18,13 +18,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Name</label>
+                                    <label class="form-label fw-bold">Name</label>
                                     <input type="text" name="name" class="form-control border-0 shadow-sm" value="{{ $category->name }}" placeholder="Enter category name" />
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Display Name</label>
+                                    <label class="form-label fw-bold">Display Name</label>
                                     <input type="text" name="display_name" class="form-control border-0 shadow-sm" value="{{ $category->display_name }}" placeholder="Enter display name" />
                                 </div>
                             </div>
@@ -32,13 +32,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Code</label>
+                                    <label class="form-label fw-bold">Code</label>
                                     <input type="text" name="code" class="form-control border-0 shadow-sm" value="{{ $category->code }}" placeholder="Enter category code" />
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Change Image</label>
+                                    <label class="form-label fw-bold">Change Image</label>
                                     <input type="file" name="image_path" class="form-control border-0 shadow-sm" accept=".jpg,.png,.pdf,.jpeg" />
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Current Image</label><br>
+                                    <label class="form-label fw-bold">Current Image</label><br>
                                     @if($category->image_path)
                                         <img src="{{ asset($category->image_path) }}" class="img-thumbnail" width="150">
                                     @else
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Description</label>
+                                    <label class="form-label fw-bold">Description</label>
                                     <textarea name="description" rows="3" class="form-control border-0 shadow-sm" placeholder="Enter description">{{ $category->description }}</textarea>
                                 </div>
                             </div>

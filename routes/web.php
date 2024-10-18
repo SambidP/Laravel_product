@@ -13,14 +13,14 @@ Route::post('/register', [AuthController::class,'register']);
 Route::get('/login', [AuthController::class,'register_view'])->name('login');
 Route::post('/login', [AuthController::class,'login']);
 
-Route::get('/category/trash', [CategoryController::class, 'trash'])->name('category.trash');
-
 Route::group(['middleware' => ['auth']], function (){
-    Route::resource("category",CategoryController::class);
-    Route::resource("product",ProductController::class);
+    Route::get('/category/trash', [CategoryController::class, 'trash'])->name('category.trash');
+    Route::get('/dashboard', [CategoryController::class, 'dashboard']);
     Route::post("/logout", [AuthController::class,'logout']);
     Route::post('/category/{id}/restore', [CategoryController::class, 'restore'])->name('category.restore');
     Route::delete('/category/{id}/delete-permanently', [CategoryController::class, 'deletePermanently'])->name('category.deletePermanently');
+    Route::resource("category",CategoryController::class);
+    Route::resource("product",ProductController::class);
 });
 Route::get("/", [AuthController::class,"welcome"]);
 

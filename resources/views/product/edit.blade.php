@@ -19,13 +19,13 @@
                         <div class="row">
                             <div class="col-md-4">
                             <div class="mb-3">
-                                <label class="form-label bold-label">Name</label>
+                                <label class="form-label fw-bold">Name</label>
                                 <input type="text" name="name" class="form-control" value="{{ $product->name }}" required/>
                             </div>
                             </div>
                             <div class="col-md-8">
                             <div class="mb-3">
-                                <label class="form-label bold-label">Display Name</label>
+                                <label class="form-label fw-bold">Display Name</label>
                                 <input type="text" name="display_name" class="form-control" value="{{ $product->display_name }}" required/>
                             </div>
                             </div>
@@ -33,20 +33,20 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Code</label>
+                                    <label class="form-label fw-bold">Code</label>
                                     <input type="text" name="code" class="form-control" value="{{ $product->code }}" required/>
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Update Image</label>
+                                    <label class="form-label fw-bold">Update Image</label>
                                     <input type="file" name="image_path" class="form-control" accept=".jpg,.png,.jpeg" />
                                 </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">{{ $product->display_name }}</label><br>
+                                    <label class="form-label fw-bold">{{ $product->display_name }}</label><br>
                                     @if($product->image_path)
                                         <img src="{{ asset($product->image_path) }}" class="img-thumbnail" width="150">
                                     @else
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="mb-3">
-                                    <label class="form-label bold-label">Description</label>
+                                    <label class="form-label fw-bold">Description</label>
                                     <textarea name="description" rows="3" class="form-control">{{ $product->description }}</textarea>
                                 </div>
                             </div>

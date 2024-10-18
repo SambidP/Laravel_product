@@ -23,23 +23,23 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-3">
-                        <label class="form-label bold-label">ID</label>
+                        <label class="form-label fw-bold">ID</label>
                         <p class="text-muted">{{ $category->category_id }}</p>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label bold-label">Name</label>
+                        <label class="form-label fw-bold">Name</label>
                         <p class="text-muted">{{ $category->name }}</p>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label bold-label">{{ $category->display_name }}</label><br>
+                        <label class="form-label fw-bold">{{ $category->display_name }}</label><br>
                         <img src="{{ asset($category->image_path) }}" class="rounded" width="150" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label bold-label">Description</label>
+                        <label class="form-label fw-bold">Description</label>
                         <p class="text-muted">{!! $category->description !!}</p>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label bold-label">Code</label>
+                        <label class="form-label fw-bold">Code</label>
                         <p class="text-muted">{{ $category->code }}</p>
                     </div>
                 </div>

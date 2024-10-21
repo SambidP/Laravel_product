@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.navbar')
 @section('content')
 
 <div class="container-fluid mt-4">

@@ -1,8 +1,5 @@
 @extends('layouts.navbar')
 @section('content')
-
-<div class="container mt-4">
-
 @if (session('error'))
  <div class="alert alert-danger">
     {{ session('error') }}
@@ -13,11 +10,12 @@
     {{ session('success') }}
  </div>
 @endif
+<div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-lg border-0 rounded-3">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Categories List
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0 p-1">Trashed categories
                         <a href="{{ url('category') }}" class="btn btn-outline-light float-end">Back to Category Listing</a>
                     </h4>
                 </div>

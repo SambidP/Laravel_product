@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\{Category,User,Product,Role};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,18 +16,19 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::paginate(5);
         return view('category.index', [
             'categories' => $categories
         ]);
     }
 
-    public function create()
+    public function create(User $user, Role $role)
     {
-        if (!$this->isAdmin()) {
-            return redirect()->route('category.index')->with('error', 'Access denied. Admins only.');
-        }
-        return view('category.create');
+        $user = Auth::user();
+        foreach($user->roles as $role){}
+        if ($role->hasPermissions('add-category')){
+        return view('category.create');       
+        }else return redirect()->route('category.index')->with('error', 'Unauthorized action.');
     }
 
     public function store(Request $request, Category $category)
@@ -146,5 +147,13 @@ class CategoryController extends Controller
             unlink(public_path($category->image_path));
         }
         return redirect()->route('category.trash')->with('success', 'Category deleted permanently.');
+    }
+
+    public function dashboard(User $users, Category $categories)
+    {
+        $users = User::paginate(5);
+        $categories = Category::paginate(5);
+        $products = Product::paginate(5);
+        return view('dashboard',['users'=>$users,'categories'=>$categories, 'products'=>$products]);
     }
 }   

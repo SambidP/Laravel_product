@@ -1,8 +1,5 @@
 @extends('layouts.navbar')
 @section('content')
-
-<div class="container mt-4">
-
 @if (session('error'))
  <div class="alert alert-danger">
     {{ session('error') }}
@@ -12,14 +9,15 @@
  <div class="alert alert-success">
     {{ session('success') }}
  </div>
-@endif
+ @endif
+<div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-lg border-0 rounded-3">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0">Categories List
                         <a href="{{ url('category/create') }}" class="btn btn-outline-light float-end ms-1">Add Category</a>
-                        <a href="{{ url('category/trash') }}" class="btn btn-outline-light float-end">Go to Trash</a>
+                        <a href="{{ route('category.trash') }}" class="btn btn-outline-light float-end">Go to Trash</a>
                     </h4>
                 </div>
                 <div class="card-body p-4">
@@ -53,8 +51,8 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-center mt-3">
-                        {{ $categories->links() }}
+                    <div>
+                        {{ $categories->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

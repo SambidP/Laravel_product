@@ -26,24 +26,24 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-3">
-                        <label class="bold-label">ID</label>
+                        <label class="fw-bold">ID</label>
                         <p>{{ $product->product_id }}</p>
                     </div>
                     <div class="mb-3">
-                        <label class="bold-label">Name</label>
+                        <label class="fw-bold">Name</label>
                         <p>{{ $product->name }}</p>
                     </div>
                     <div class="mb-3">
-                        <label class="bold-label">{{ $product->display_name }}</label>
+                        <label class="fw-bold">{{ $product->display_name }}</label>
                         <br />
                         <img src="{{ asset($product->image_path) }}" width="150" class="img-thumbnail" />
                     </div>
                     <div class="mb-3">
-                        <label class="bold-label">Description</label>
+                        <label class="fw-bold">Description</label>
                         <p>{!! $product->description !!}</p>
                     </div>
                     <div class="mb-3">
-                        <label class="bold-label">Product Code</label>
+                        <label class="fw-bold">Product Code</label>
                         <p>{{ $product->code }}</p>
                     </div>
                 </div>

@@ -16,13 +16,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Name</label>
+                                    <label class="form-label fw-bold">Name</label>
                                     <input type="text" name="name" class="form-control border-0 shadow-sm" placeholder="Enter product name" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Display Name</label>
+                                    <label class="form-label fw-bold">Display Name</label>
                                     <input type="text" name="display_name" class="form-control border-0 shadow-sm" placeholder="Enter display name" />
                                 </div>
                             </div>
@@ -30,19 +30,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Code</label>
+                                    <label class="form-label fw-bold">Code</label>
                                     <input type="text" name="code" class="form-control border-0 shadow-sm" placeholder="Enter product code" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Image</label>
+                                    <label class="form-label fw-bold">Image</label>
                                     <input type="file" name="image_path" class="form-control border-0 shadow-sm" accept=".jpg,.png,.pdf,.jpeg" required />
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label font-weight-bold">Description</label>
+                            <label class="form-label fw-bold">Description</label>
                             <textarea name="description" rows="3" class="form-control border-0 shadow-sm" placeholder="Enter description"></textarea>
                         </div>
                         <select class="form-select mb-3" aria-label="Select your category" name="category_id">

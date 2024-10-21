@@ -13,7 +13,7 @@
 @auth
 <header>
     <section id="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-bordered">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <img src="/assets/img/laravel_icon_1.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -25,9 +25,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end bg-dark border-0" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item text-white" href="#">Profile</a></li>
-                                <li><hr class="dropdown-divider bg-light"></li>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark border border-light" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item text-white" href="/dashboard">Dashboard</a></li>
                                 <li>
                                     <form action="/logout" method="post" class="d-inline">
                                         @csrf
@@ -45,27 +44,30 @@
 <body class="page">
     <div class="container-fluid">
         <div class="row">
-            <aside class="col-md-3 col-lg-2 bg-dark sidebar text-white d-flex flex-column mt-5" >
-                <ul class="nav flex-column mb-auto">
+            <aside class="col-md-3 col-lg-2 col-sm-2 bg-dark sidebar text-white d-flex flex-column" >
+                <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
+                    <li><hr class="dropdown-divider-white"></li> 
                     <li class="nav-item">
                         <a class="nav-link" href="/category">Category Listing</a>
                     </li>
+                    <li><hr class="dropdown-divider-white"></li> 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Create
                         </a>
-                        <ul class="dropdown-menu bg-dark border-0 ms-1">
+                        <ul class="dropdown-menu bg-dark border border-light ms-1">
                             <li><a class="nav-link" href="/product/create">Create Product</a></li>
                             <li><a class="nav-link" href="/category/create">Create Category</a></li>
                         </ul>
+                        <li><hr class="dropdown-divider-white"></li>
                     </li>
                 </ul>
             </aside>
             <main class="col-md-9 col-lg-10 main-content">
-                <div class="container mt-5">
+                <div class="container">
                     @yield('content')
                 </div>
             </main>
@@ -77,7 +79,7 @@
 
 @guest
 <body class="page">
-    <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-bordered">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="/">
                 <img src="/assets/img/laravel_icon_1.jpg" width="30" height="30" class="d-inline-block align-top"
@@ -89,13 +91,16 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li>
-                        <div class="btn-group" role="group" aria-label="Auth">
-                            <a href="/register" class="btn btn-outline-info">Register</a>
-                            <a href="/login" class="btn btn-outline-info">Login</a>
-                        </div>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sign-in
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-white" href="/register">Register</a></li>
+                            <li><a class="dropdown-item text-white" href="/login">Login</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>

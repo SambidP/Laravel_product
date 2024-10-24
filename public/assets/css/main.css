@@ -7,7 +7,7 @@
 {
     height: 100vh;
     position: fixed;
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 .main-content 
@@ -29,4 +29,10 @@
 
 .navbar-bordered {
     border-bottom: 2px solid grey;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin-top: 10px; /* Adjust margin for mobile screens if needed */
+    }
 }

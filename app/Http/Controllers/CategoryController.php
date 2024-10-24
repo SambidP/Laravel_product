@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Category,User,Product,Role};
+use App\Models\{Category,User,Product,Role,Customer,Permission};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,13 +22,16 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function create(User $user, Role $role)
+    public function create(User $user, Role $role, Permission $permission)
     {
         $user = Auth::user();
         foreach($user->roles as $role){}
+
         if ($role->hasPermissions('add-category')){
-        return view('category.create');       
-        }else return redirect()->route('category.index')->with('error', 'Unauthorized action.');
+            return view('category.create');       
+        }else{
+            return redirect()->route('category.index')->with('error', 'Unauthorized action.');
+        }
     }
 
     public function store(Request $request, Category $category)
@@ -149,11 +152,11 @@ class CategoryController extends Controller
         return redirect()->route('category.trash')->with('success', 'Category deleted permanently.');
     }
 
-    public function dashboard(User $users, Category $categories)
+    public function dashboard(Customer $customers, Category $categories)
     {
-        $users = User::paginate(5);
+        $customers = Customer::paginate(5);
         $categories = Category::paginate(5);
         $products = Product::paginate(5);
-        return view('dashboard',['users'=>$users,'categories'=>$categories, 'products'=>$products]);
+        return view('dashboard',['customers'=>$customers,'categories'=>$categories, 'products'=>$products]);
     }
 }   

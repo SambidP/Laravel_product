@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\PermissionCheck;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,7 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(Authenticate::class);
+
+        $middleware->prepend(Authenticate::class);
+        // $middleware->append(PermissionCheck::class);
         $middleware->redirectGuestsTo('/login');
         $middleware->trustHosts(at: ['localhost:8000']);
     })

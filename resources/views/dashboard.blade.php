@@ -66,7 +66,7 @@
         <div class="col-md-6 mx-auto">
             <div class="card shadow-lg border-0 rounded-3">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Users</h4>
+                    <h4 class="mb-0">Customers</h4>
                 </div>
                 <div class="card-body p-4">
                     <table class="table table-bordered table-hover">
@@ -78,11 +78,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($customers as $customer)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $customer->id }}</td>
+                                <td>{{ $customer->name }}</td>
+                                <td>{{ $customer->email }}</td>
                             </tr>
                             @endforeach 
                         </tbody>

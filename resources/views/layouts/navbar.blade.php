@@ -13,12 +13,15 @@
 @auth
 <header>
     <section id="nav-bar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-bordered">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-bordered fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <img src="/assets/img/laravel_icon_1.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
                     Product App
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
@@ -44,7 +47,7 @@
 <body class="page">
     <div class="container-fluid">
         <div class="row">
-            <aside class="col-md-3 col-lg-2 col-sm-2 bg-dark sidebar text-white d-flex flex-column" >
+            <aside class="col-md-3 col-lg-2 col-sm-2 bg-dark sidebar text-white d-flex flex-column mt-2" >
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>

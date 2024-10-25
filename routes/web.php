@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\{Route,Password,Hash};
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\{CategoryController,AuthController,ProductController};
 
+Route::get("/", [AuthController::class,"welcome"]);
 Route::get('/register', [AuthController::class,'index']);
 Route::post('/register', [AuthController::class,'register']);
 
@@ -22,7 +23,6 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource("category",CategoryController::class);
     Route::resource("product",ProductController::class);
 });
-Route::get("/", [AuthController::class,"welcome"]);
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');

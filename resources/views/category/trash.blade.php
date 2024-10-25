@@ -1,6 +1,7 @@
 @extends('layouts.navbar')
 @section('content')
-@if (session('error'))
+<div class="container mt-4">
+    @if (session('error'))
  <div class="alert alert-danger">
     {{ session('error') }}
  </div>
@@ -10,7 +11,6 @@
     {{ session('success') }}
  </div>
 @endif
-<div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card shadow-lg border-0 rounded-3">

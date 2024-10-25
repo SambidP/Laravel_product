@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\{Route,Password,Hash};
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\{CategoryController,AuthController,ProductController};
 
+//Welcome and Sign-in Pages
 Route::get("/", [AuthController::class,"welcome"]);
 Route::get('/register', [AuthController::class,'index']);
 Route::post('/register', [AuthController::class,'register']);
-
 Route::get('/login', [AuthController::class,'register_view'])->name('login');
 Route::post('/login', [AuthController::class,'login']);
 
-Route::group(['middleware' => ['auth']], function (){
+//Passing the Auth Middleware
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/category/trash', [CategoryController::class, 'trash'])->name('category.trash');
     Route::get('/dashboard', [CategoryController::class, 'dashboard']);
     Route::post("/logout", [AuthController::class,'logout']);
@@ -24,6 +25,22 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource("product",ProductController::class);
 });
 
+//Passing the PermissionCheck Middleware
+//can-create
+Route::get('/category/create',[CategoryController::class, 'create'])->middleware('perms:can-create');
+Route::get('/product/create',[ProductController::class, 'create'])->name('product.create')->middleware('perms:can-create');
+
+//can-edit
+Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit')->middleware('perms:can-edit');
+Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit')->middleware('perms:can-edit');
+
+//can-delete
+Route::delete('/category/{id}/delete-permanently', [CategoryController::class, 'deletePermanently'])
+->name('category.deletePermanently')
+->middleware('perms:can-delete');
+Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy')->middleware('perms:can-delete');
+
+//email-verification routes
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
@@ -40,6 +57,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+//forgot-password routes
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->middleware('guest')->name('password.request');
@@ -56,6 +74,7 @@ Route::post('/forgot-password', function (Request $request) {
                 : back()->withErrors(['email' => __($status)]);
 })->middleware('guest')->name('password.email');
 
+//reset password routes
 Route::get('/reset-password/{token}', function (string $token) {
     return view('auth.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');

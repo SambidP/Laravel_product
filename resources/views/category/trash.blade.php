@@ -43,7 +43,6 @@
                                         onclick="event.preventDefault(); document.getElementById('restore-form-{{ $category->category_id }}').submit();">
                                         Restore
                                     </a>
-                                    
                                     <form id="restore-form-{{ $category->category_id }}" 
                                           action="{{ route('category.restore', $category->category_id) }}" 
                                           method="POST" class="d-none">
@@ -54,7 +53,6 @@
                                         onclick="if(confirm('Are you sure you want to delete this category?')) { event.preventDefault(); document.getElementById('delete-form-{{ $category->category_id }}').submit(); }">
                                         Delete Permanently
                                     </a>
-
                                         <form id="delete-form-{{ $category->category_id }}"
                                             action="{{ route('category.deletePermanently', $category->category_id) }}"
                                             method="POST" class="d-none">
@@ -66,6 +64,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div>
+                        {{ $categories->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>

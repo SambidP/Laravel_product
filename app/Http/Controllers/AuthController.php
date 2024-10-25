@@ -39,23 +39,27 @@ public function register(Request $request)
         event(new Registered($user));
         return redirect('/login')->with('success','User Registration Successful');  
 }
-
-public function login(Request $request){
-
-    $logInData = $request->validate([
-        'email' => 'required|string|email',
-        'password' => 'required|string',
-    ]); 
-
-    if (!Auth::attempt($request->only('email', 'password'))) {
-        session()->flash('error', 'Invalid credentials');
-        return redirect()->back()->withInput();
+public function login(Request $request) 
+{
+        $logInData = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+    
+        // Attempt to log the user in
+        if (!Auth::attempt($logInData)) {
+            session()->flash('error', 'Invalid credentials');
+            return redirect()->back()->withInput();
+        }
+        else {
+            $request->session()->regenerate();
+        }
+        $user = Auth::user(); 
+    
+        $accessToken = $user->createToken('authToken')->accessToken; 
+    
+        return redirect('/category')->with('success', 'User logged in successfully');
     }
-    $user = Auth::user()->id;
-    $users = User::find($user);
-    $accessToken = $users->createToken('authToken')->accessToken;
-    return redirect('/category')->with('success','User logged in successfully');
-}
 
 public function logout(Request $request){
     auth::guard('web')->logout();

@@ -11,13 +11,13 @@ class PermissionCheck
 {
     public function handle(Request $request, Closure $next, $permission=null):Response
     {
-        $user = Auth::user();
+        $user =Auth::user();
 
         foreach ($user->roles as $role) {
             if ($role->hasPermissions($permission)) {
                 return $next($request);
             }
         }
-        return redirect()->route('category.index')->with('error', 'Unauthorized action.');
+        return redirect()->back()->with('error', 'Unauthorized action.');
     }
 }

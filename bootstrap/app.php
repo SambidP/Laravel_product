@@ -15,8 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
 
-        $middleware->prepend(Authenticate::class);
-        // $middleware->append(PermissionCheck::class);
+        $middleware->alias([
+            App\Http\Middleware\Authenticate::class,
+            'perms'=>App\Http\Middleware\PermissionCheck::class,
+        ]);
         $middleware->redirectGuestsTo('/login');
         $middleware->trustHosts(at: ['localhost:8000']);
     })

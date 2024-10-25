@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\InvoiceController;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'],
 function(){
@@ -15,5 +15,5 @@ function(){
     Route::apiResource('invoices', InvoiceController::class);
 
     Route::post('invoices/bulk', ['uses' => 'InvoiceController@bulkStore']);
-
+    
 });

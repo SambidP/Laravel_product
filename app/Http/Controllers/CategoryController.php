@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::paginate(8);
+        $categories = Category::paginate(10);
         return view('category.index', [
             'categories' => $categories
         ]);
@@ -110,7 +110,7 @@ class CategoryController extends Controller
     
     public function trash()
     {
-        $categories = Category::onlyTrashed()->paginate(8);
+        $categories = Category::onlyTrashed()->paginate(10);
         return view('category.trash', ['categories' => $categories]);
     }
     public function deletePermanently($id)

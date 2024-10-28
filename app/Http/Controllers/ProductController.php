@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
-    private function isAdmin()
-    {
-        $user = Auth::user();
-        return $user->roles->contains('name', 'admin');
-    }
     public function index(Request $request)
     {
         $category_id = $request->input("category_id");
@@ -22,9 +17,6 @@ class ProductController extends Controller
 
     public function create(Product $product)
     {
-        if (!$this->isAdmin()) {
-            return redirect()->back()->with('error', 'Access denied. Admins only.');
-        }
         $categories = Category::all();
         return view('product.create', compact('categories'));
     }
@@ -109,9 +101,6 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        if (!$this->isAdmin()) {
-            return redirect()->back()->with('error', 'Access denied. Admins only.');
-        }
         if ($product->image_path && file_exists(public_path($product->image_path))) {
             unlink(public_path($product->image_path));
         }

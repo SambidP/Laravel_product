@@ -22,4 +22,8 @@ class Category extends Model
         'image_path',
         'description',
     ];
+
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
 }

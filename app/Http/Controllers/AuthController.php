@@ -22,7 +22,7 @@ public function welcome(){
 }
 
 public function register(Request $request)
-    {
+{
         $registerData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -34,8 +34,6 @@ public function register(Request $request)
             'email'=> $registerData['email'],
             'password'=> Hash::make($registerData['password']),
         ]);
-
-        $accessToken = $user->createToken('authToken')->accessToken;
         event(new Registered($user));
         return redirect('/login')->with('success','User Registration Successful');  
 }
@@ -61,7 +59,8 @@ public function login(Request $request)
         return redirect('/category')->with('success', 'User logged in successfully');
     }
 
-public function logout(Request $request){
+public function logout(Request $request)
+{
     auth::guard('web')->logout();
 
     $request -> session()->invalidate();
@@ -72,16 +71,5 @@ public function logout(Request $request){
 
     public function index_for(){
         return Product::get();
-    }
 }
-
-    //role
-    // $admin = User::whereName('Admin')->with('roles')->first();
-    // $admin_role = Role::whereName('admin')->first();
-    // $admin->roles()->attach($admin_role);
-    // dd($admin->toArray());
-    //permission
-    // $delete_category_permission = Permission::whereName('delete-category')->first();
-    // $admin_role = Role::whereName('admin')->first();
-    // $admin_role->permissions()->attach($delete_category_permission);
-    // dd($admin_role->permissions);
+}

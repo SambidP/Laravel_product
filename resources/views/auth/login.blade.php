@@ -2,15 +2,12 @@
 @section('content')
 
 <div class="container-fluid mt-4">
-    @if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
-@if (session('error'))
-<div class="alert alert-danger">
-    {{ session('error') }}
-</div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+    </div>
 @endif
   <div class="row">
       <div class="col d-flex justify-content-center">

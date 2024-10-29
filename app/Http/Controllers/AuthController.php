@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User,Product};
 use Illuminate\Http\Request;
+use App\Models\{User,Product};
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\{Hash,Auth};
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\{Hash,Auth};
 
 class AuthController extends Controller{
 public function register_view(){
@@ -43,8 +43,7 @@ public function login(Request $request)
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-    
-        // Attempt to log the user in
+
         if (!Auth::attempt($logInData)) {
             session()->flash('error', 'Invalid credentials');
             return redirect()->back()->withInput();
@@ -68,7 +67,7 @@ public function logout(Request $request)
 
     return redirect('/')->with('success','User logged out successfully');
     }
-
+    
     public function index_for(){
         return Product::get();
 }

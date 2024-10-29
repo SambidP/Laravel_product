@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\{Hash, Auth};
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\{Hash, Auth};
 
 class ApiAuthController extends Controller
 {

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Product,Category};
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\{Product,Category};
 class ProductController extends Controller
 {
     public function index(Request $request)

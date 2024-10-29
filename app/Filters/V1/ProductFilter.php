@@ -4,20 +4,16 @@ namespace App\Filters\V1;
 
 use App\Filters\ApiFilter;
 
-class CustomerFilter extends ApiFilter{
+class ProductFilter extends ApiFilter{
     protected $safeParms = [
-        'id' => ['eq'],
         'name' => ['eq'],
-        'type' => ['eq'],
-        'email' => ['eq'],
-        'address' => ['eq'],
-        'city' => ['eq'],
-        'state' => ['eq'],
-        'postalCode' => ['eq', 'gt', 'lt']
+        'display_name' => ['eq'],
+        'code' => ['eq','lt','gt','lte','gte'],
     ];
 
     protected $columnMap = [
-        'postalCode' => 'postal_code'
+        'display_name' => 'display_name',
+        'image_path' => 'image_path'
     ];
 
     protected $operatorMap = [
@@ -27,5 +23,4 @@ class CustomerFilter extends ApiFilter{
         'gt' => '>',
         'gte' => '>=',
     ];
-
 }

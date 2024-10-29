@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Category,Product,Customer};
 use Illuminate\Http\Request;
+use App\Models\{Category,Product,Customer};
 
 class CategoryController extends Controller
 {
@@ -98,7 +98,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('/category')->with('success','Category Deleted Successfully');
+        return redirect()->back()->with('success','Category Deleted Successfully');
     }
 
     public function restore($id)
@@ -120,7 +120,7 @@ class CategoryController extends Controller
         if ($category->image_path && file_exists(public_path($category->image_path))) {
             unlink(public_path($category->image_path));
         }
-        return redirect()->route('category.trash')->with('success', 'Category deleted permanently.');
+        return redirect()->back()->with('success', 'Category deleted permanently.');
     }
 
     public function dashboard(Customer $customers, Category $categories)

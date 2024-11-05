@@ -1,11 +1,13 @@
 @extends('layouts.navbar')
 @section('content')
-@if (session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
 <div class="container-fluid mt-5">
+<div>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+</div>
   <div class="row">
       <div class="col d-flex justify-content-center">
           <div class="card text-white mb-3 bg-dark" style="width: 20rem;">

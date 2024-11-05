@@ -9,6 +9,11 @@
             @endforeach
     </div>
 @endif
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
   <div class="row">
       <div class="col d-flex justify-content-center">
           <div class="card text-white mb-3 bg-dark" style="width: 20rem;">

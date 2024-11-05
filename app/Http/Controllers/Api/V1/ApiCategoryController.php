@@ -45,7 +45,7 @@ class ApiCategoryController extends Controller
     public function destroy(Category $category){
         $category->delete();
         return response()->Json([
-            'message' => "Category Deleted!"
+            'message' => "Category Deleted!",
         ]);
     }
 }

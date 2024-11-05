@@ -2,7 +2,18 @@
 
 @section('content')
 <div class="container mt-4">
-    <!-- Row for Users -->
+    <div>
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+    </div>
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="card shadow-lg border-0 rounded-3">

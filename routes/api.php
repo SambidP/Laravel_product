@@ -11,7 +11,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-//Versioning Controllers
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'],
 function(){
     Route::apiResource('customers', CustomerController::class)->middleware('auth:api');
@@ -21,6 +20,5 @@ function(){
     Route::apiResource('products', ApiProductController::class)->middleware('auth:api');
 });
 
-//API authentication
 Route::post('login',[ApiAuthController::class, 'login']);
 Route::post('register',[ApiAuthController::class, 'register']);

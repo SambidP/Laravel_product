@@ -4,11 +4,12 @@ namespace App\Filters\V1;
 
 use App\Filters\ApiFilter;
 
-class CategoryFilter extends ApiFilter{
+class CategoryFilter extends ApiFilter
+{
     protected $safeParms = [
         'name' => ['eq'],
         'display_name' => ['eq'],
-        'code' => ['eq','lt','gt','lte','gte'],
+        'code' => ['eq', 'lt', 'gt', 'lte', 'gte'],
     ];
 
     protected $columnMap = [

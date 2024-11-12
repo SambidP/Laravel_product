@@ -4,7 +4,8 @@ namespace App\Filters\V1;
 
 use App\Filters\ApiFilter;
 
-class CustomerFilter extends ApiFilter{
+class CustomerFilter extends ApiFilter
+{
     protected $safeParms = [
         'id' => ['eq'],
         'name' => ['eq'],

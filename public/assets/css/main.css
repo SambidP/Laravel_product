@@ -23,6 +23,7 @@
 .sidebar .nav-link:hover {
     color: gold; 
 }
+
 .dropdown-item.text-white:hover{
     background-color: darkgrey;
 }
@@ -35,4 +36,8 @@
     .navbar-nav {
         margin-top: 10px; /* Adjust margin for mobile screens if needed */
     }
+}
+
+.nav-link.dropdown-toggle {
+    cursor: pointer;
 }

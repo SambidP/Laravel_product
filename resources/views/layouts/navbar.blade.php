@@ -58,7 +58,7 @@
                     </li>
                     <li><hr class="dropdown-divider-white"></li> 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             Create
                         </a>
                         <ul class="dropdown-menu bg-dark border border-light ms-1">
